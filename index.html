@@ -58,10 +58,14 @@
         text-align: center;
         animation: pulse-glow 3s infinite ease-in-out;
       }
-      .shield-skull {
+      .shield-svg {
         width: 300px;
         height: auto;
         filter: drop-shadow(0 0 30px #f97316);
+      }
+      .shield-svg path {
+        fill: url(#gradient-motion);
+        stroke: url(#gradient-motion);
       }
       @keyframes pulse-glow {
         0%, 100% {
@@ -70,6 +74,11 @@
         50% {
           filter: drop-shadow(0 0 40px #f97316);
         }
+      }
+      @keyframes move-gradient {
+        0% { stop-color: #f97316; }
+        50% { stop-color: #ff4500; }
+        100% { stop-color: #f97316; }
       }
     </style>
   </head>
@@ -87,7 +96,19 @@
 
     <section class="hero circuit-border m-4">
       <div class="hero-graphic">
-        <img src="aegis-skull-logo.png" alt="Aegis Skull Logo" class="shield-skull" />
+        <svg class="shield-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradient-motion" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%">
+                <animate attributeName="stop-color" values="#f97316;#ff4500;#f97316" dur="4s" repeatCount="indefinite" />
+              </stop>
+              <stop offset="100%">
+                <animate attributeName="stop-color" values="#ff4500;#f97316;#ff4500" dur="4s" repeatCount="indefinite" />
+              </stop>
+            </linearGradient>
+          </defs>
+          <path d="M32 2L12 8V24C12 40 21 52 32 60C43 52 52 40 52 24V8L32 2Z" stroke-width="2"/>
+        </svg>
       </div>
     </section>
 
