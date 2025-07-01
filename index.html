@@ -6,29 +6,12 @@
     <title>Aegis</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
       body {
-        background: radial-gradient(#0a0a0a, #000);
-        overflow-x: hidden;
+        background: linear-gradient(to right, #0a0a0a, #000);
         font-family: 'Orbitron', sans-serif;
         color: #f97316;
-      }
-      .neon-line {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 200%;
-        height: 3px;
-        background: linear-gradient(90deg, transparent, #f97316, transparent);
-        animation: slide 3s linear infinite;
-        opacity: 0.6;
-      }
-      @keyframes slide {
-        from {
-          transform: translateX(-50%);
-        }
-        to {
-          transform: translateX(0%);
-        }
       }
       .glow {
         text-shadow: 0 0 10px #f97316, 0 0 20px #f97316;
@@ -38,71 +21,84 @@
         border-image: repeating-linear-gradient(45deg, #f97316, #f97316 10px, transparent 10px, transparent 20px) 1;
         box-shadow: 0 0 20px #f97316;
       }
-      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+      .hero {
+        background: radial-gradient(circle at center, #1a1a1a, #000);
+        padding: 6rem 1rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 2rem;
+      }
+      .hero-text {
+        max-width: 600px;
+      }
+      .hero-title {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #f97316;
+      }
+      .hero-subtitle {
+        font-size: 1rem;
+        color: #f97316;
+        margin-top: 1rem;
+        line-height: 1.6;
+      }
+      .hero-buttons button {
+        background-color: #f97316;
+        color: black;
+        padding: 0.75rem 1.5rem;
+        margin-right: 1rem;
+        border-radius: 0.5rem;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+      .hero-buttons button:hover {
+        background-color: black;
+        color: #f97316;
+        border: 1px solid #f97316;
+      }
+      .hero-graphic {
+        position: relative;
+        text-align: center;
+      }
+      .shield-skull {
+        width: 180px;
+        margin: 0 auto;
+        filter: drop-shadow(0 0 12px #f97316);
+      }
     </style>
   </head>
-  <body class="relative">
-    <div class="neon-line"></div>
+  <body>
     <header class="bg-black bg-opacity-80 shadow-lg z-10 relative circuit-border">
       <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
         <h1 class="text-2xl font-bold tracking-widest text-orange-500 glow">ÆGIS</h1>
         <nav class="space-x-6 text-orange-300">
-          <a href="#about" class="hover:text-orange-400">About</a>
-          <a href="#services" class="hover:text-orange-400">Services</a>
-          <a href="#team" class="hover:text-orange-400">Team</a>
+          <a href="#" class="hover:text-orange-400">Home</a>
+          <a href="#features" class="hover:text-orange-400">Features</a>
           <a href="#contact" class="hover:text-orange-400">Contact</a>
         </nav>
       </div>
     </header>
 
-    <section class="text-center py-24 bg-gradient-to-br from-black via-gray-900 to-gray-800 circuit-border m-4 rounded-xl">
-      <h2 class="text-5xl font-bold mb-6 text-orange-400 glow">Shielding the Future</h2>
-      <p class="text-orange-400 text-lg max-w-xl mx-auto">
-        Aegis is your digital guardian—specializing in cybersecurity, privacy, and data integrity.
-      </p>
-    </section>
-
-    <section id="about" class="py-16 px-6 max-w-5xl mx-auto circuit-border m-4 rounded-xl">
-      <h3 class="text-3xl font-semibold mb-4 text-orange-400 glow">About Aegis</h3>
-      <p class="text-orange-400 leading-relaxed">
-        Founded by experts in cyber defense and digital systems, ÆGIS provides top-tier solutions in intrusion detection, secure infrastructure, and threat analysis.
-      </p>
-    </section>
-
-    <section id="services" class="py-16 px-6 bg-gray-900 circuit-border m-4 rounded-xl">
-      <h3 class="text-3xl font-semibold mb-8 text-orange-400 text-center glow">Services</h3>
-      <div class="grid md:grid-cols-3 gap-8 text-center">
-        <div class="bg-gray-800 bg-opacity-80 p-6 rounded-xl shadow-md hover:shadow-orange-400 transition circuit-border">
-          <h4 class="text-xl font-bold mb-2 glow">Threat Monitoring</h4>
-          <p class="text-orange-400">Real-time threat tracking with AI-enhanced analysis.</p>
-        </div>
-        <div class="bg-gray-800 bg-opacity-80 p-6 rounded-xl shadow-md hover:shadow-orange-400 transition circuit-border">
-          <h4 class="text-xl font-bold mb-2 glow">Secure Architecture</h4>
-          <p class="text-orange-400">Design systems with end-to-end encryption and layered defense.</p>
-        </div>
-        <div class="bg-gray-800 bg-opacity-80 p-6 rounded-xl shadow-md hover:shadow-orange-400 transition circuit-border">
-          <h4 class="text-xl font-bold mb-2 glow">Pentesting</h4>
-          <p class="text-orange-400">Simulated attacks to find your system’s weakest links.</p>
+    <section class="hero">
+      <div class="hero-text">
+        <h2 class="hero-title glow">SECURE YOUR WORLD<br>WITH ONE SHIELD</h2>
+        <p class="hero-subtitle">
+          Simplify your protection with Aegis Shield. Manage all your digital defenses in one powerful, intuitive system—always on, always alert.
+        </p>
+        <div class="hero-buttons mt-4">
+          <button>GET STARTED</button>
+          <button>LEARN MORE</button>
         </div>
       </div>
-    </section>
-
-    <section id="team" class="py-16 px-6 max-w-5xl mx-auto circuit-border m-4 rounded-xl">
-      <h3 class="text-3xl font-semibold mb-4 text-orange-400 glow">Our Team</h3>
-      <p class="text-orange-400 mb-6">
-        ÆGIS is led by former ethical hackers, defense engineers, and digital forensics experts.
-      </p>
-      <ul class="space-y-2 text-orange-300">
-        <li>🛡️ Alex Raze — Founder & Chief Strategist</li>
-        <li>🧠 Dr. Elara Syn — AI & Threat Intelligence</li>
-        <li>🔍 Jason Kuro — Pentest Lead</li>
-      </ul>
-    </section>
-
-    <section id="contact" class="py-16 px-6 bg-gray-900 text-center circuit-border m-4 rounded-xl">
-      <h3 class="text-3xl font-semibold mb-6 text-orange-400 glow">Contact Us</h3>
-      <p class="text-orange-400 mb-2">Email: contact@aegis-sec.com</p>
-      <p class="text-orange-400">Phone: +60 1234 56789</p>
+      <div class="hero-graphic">
+        <!-- Simplified SVG shield with skull icon -->
+        <svg class="shield-skull" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#f97316" d="M32 2C22 8 12 10 12 20c0 17 9 27 20 32 11-5 20-15 20-32 0-10-10-12-20-18z" />
+          <circle cx="32" cy="34" r="10" fill="black" />
+          <path fill="#f97316" d="M28 32c0-2 2-4 4-4s4 2 4 4-2 4-4 4-4-2-4-4zm-1 6c0 2 3 4 5 4s5-2 5-4v-2H27v2z" />
+        </svg>
+      </div>
     </section>
 
     <footer class="bg-black py-6 text-center text-orange-700 text-sm circuit-border m-4 rounded-xl">
@@ -110,3 +106,4 @@
     </footer>
   </body>
 </html>
+
