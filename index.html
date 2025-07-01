@@ -48,47 +48,28 @@
       .hero {
         background: radial-gradient(circle at center, #1a1a1a, #000);
         padding: 6rem 1rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        justify-content: center;
         align-items: center;
-        gap: 2rem;
-      }
-      .hero-text {
-        max-width: 600px;
-      }
-      .hero-title {
-        font-size: 3rem;
-        font-weight: bold;
-        color: #f97316;
-      }
-      .hero-subtitle {
-        font-size: 1rem;
-        color: #f97316;
-        margin-top: 1rem;
-        line-height: 1.6;
-      }
-      .hero-buttons button {
-        background-color: #f97316;
-        color: black;
-        padding: 0.75rem 1.5rem;
-        margin-right: 1rem;
-        border-radius: 0.5rem;
-        font-weight: bold;
-        transition: 0.3s;
-      }
-      .hero-buttons button:hover {
-        background-color: black;
-        color: #f97316;
-        border: 1px solid #f97316;
+        text-align: center;
       }
       .hero-graphic {
         position: relative;
         text-align: center;
+        animation: pulse-glow 3s infinite ease-in-out;
       }
       .shield-skull {
-        width: 200px;
-        margin: 0 auto;
-        filter: drop-shadow(0 0 12px #f97316);
+        width: 300px;
+        height: auto;
+        filter: drop-shadow(0 0 30px #f97316);
+      }
+      @keyframes pulse-glow {
+        0%, 100% {
+          filter: drop-shadow(0 0 15px #f97316);
+        }
+        50% {
+          filter: drop-shadow(0 0 40px #f97316);
+        }
       }
     </style>
   </head>
@@ -105,18 +86,7 @@
     </header>
 
     <section class="hero circuit-border m-4">
-      <div class="hero-text">
-        <h2 class="hero-title glow">SECURE YOUR WORLD<br>WITH ONE SHIELD</h2>
-        <p class="hero-subtitle">
-          Simplify your protection with Aegis Shield. Manage all your digital defenses in one powerful, intuitive system—always on, always alert.
-        </p>
-        <div class="hero-buttons mt-4">
-          <button>GET STARTED</button>
-          <button>LEARN MORE</button>
-        </div>
-      </div>
       <div class="hero-graphic">
-        <!-- Replaced SVG with external image reference -->
         <img src="aegis-skull-logo.png" alt="Aegis Skull Logo" class="shield-skull" />
       </div>
     </section>
