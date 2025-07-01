@@ -17,9 +17,33 @@
         text-shadow: 0 0 10px #f97316, 0 0 20px #f97316;
       }
       .circuit-border {
-        border: 2px solid #f97316;
-        border-image: repeating-linear-gradient(45deg, #f97316, #f97316 10px, transparent 10px, transparent 20px) 1;
-        box-shadow: 0 0 20px #f97316;
+        position: relative;
+        border: 2px solid transparent;
+        border-radius: 1rem;
+      }
+      .circuit-border::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        z-index: -1;
+        background: linear-gradient(45deg, #f97316, #000, #f97316);
+        background-size: 400% 400%;
+        animation: gradient-border 6s ease infinite;
+        border-radius: 1rem;
+      }
+      @keyframes gradient-border {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
       }
       .hero {
         background: radial-gradient(circle at center, #1a1a1a, #000);
@@ -69,7 +93,7 @@
     </style>
   </head>
   <body>
-    <header class="bg-black bg-opacity-80 shadow-lg z-10 relative circuit-border">
+    <header class="bg-black bg-opacity-80 shadow-lg z-10 relative circuit-border m-4">
       <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
         <h1 class="text-2xl font-bold tracking-widest text-orange-500 glow">ÆGIS</h1>
         <nav class="space-x-6 text-orange-300">
@@ -80,7 +104,7 @@
       </div>
     </header>
 
-    <section class="hero">
+    <section class="hero circuit-border m-4">
       <div class="hero-text">
         <h2 class="hero-title glow">SECURE YOUR WORLD<br>WITH ONE SHIELD</h2>
         <p class="hero-subtitle">
@@ -92,16 +116,18 @@
         </div>
       </div>
       <div class="hero-graphic">
-        <!-- Simplified SVG shield with skull icon -->
+        <!-- Replaced shield with more defined skull version -->
         <svg class="shield-skull" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
           <path fill="#f97316" d="M32 2C22 8 12 10 12 20c0 17 9 27 20 32 11-5 20-15 20-32 0-10-10-12-20-18z" />
-          <circle cx="32" cy="34" r="10" fill="black" />
-          <path fill="#f97316" d="M28 32c0-2 2-4 4-4s4 2 4 4-2 4-4 4-4-2-4-4zm-1 6c0 2 3 4 5 4s5-2 5-4v-2H27v2z" />
+          <path fill="black" d="M26 30c0-3 2-6 6-6s6 3 6 6-2 6-6 6-6-3-6-6z"/>
+          <circle cx="28" cy="30" r="1.5" fill="#f97316"/>
+          <circle cx="36" cy="30" r="1.5" fill="#f97316"/>
+          <path fill="#f97316" d="M28 36h8v2c0 2-2 4-4 4s-4-2-4-4v-2z"/>
         </svg>
       </div>
     </section>
 
-    <footer class="bg-black py-6 text-center text-orange-700 text-sm circuit-border m-4 rounded-xl">
+    <footer class="bg-black py-6 text-center text-orange-700 text-sm circuit-border m-4">
       &copy; 2025 ÆGIS Security Systems. All rights reserved.
     </footer>
   </body>
