@@ -86,7 +86,7 @@
         text-align: center;
       }
       .shield-skull {
-        width: 180px;
+        width: 200px;
         margin: 0 auto;
         filter: drop-shadow(0 0 12px #f97316);
       }
@@ -116,13 +116,16 @@
         </div>
       </div>
       <div class="hero-graphic">
-        <!-- Replaced shield with more defined skull version -->
-        <svg class="shield-skull" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-          <path fill="#f97316" d="M32 2C22 8 12 10 12 20c0 17 9 27 20 32 11-5 20-15 20-32 0-10-10-12-20-18z" />
-          <path fill="black" d="M26 30c0-3 2-6 6-6s6 3 6 6-2 6-6 6-6-3-6-6z"/>
-          <circle cx="28" cy="30" r="1.5" fill="#f97316"/>
-          <circle cx="36" cy="30" r="1.5" fill="#f97316"/>
-          <path fill="#f97316" d="M28 36h8v2c0 2-2 4-4 4s-4-2-4-4v-2z"/>
+        <!-- Skull-only SVG logo based on reference image -->
+        <svg class="shield-skull" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="128" cy="128" r="120" fill="none" stroke="#f97316" stroke-dasharray="40,20" stroke-width="16" />
+          <path d="M128 190c-10 0-20-8-20-16v-6h40v6c0 8-10 16-20 16z" fill="#f97316" />
+          <circle cx="108" cy="120" r="6" fill="#f97316" />
+          <circle cx="148" cy="120" r="6" fill="#f97316" />
+          <path d="M128 98c-10 0-24 10-24 22s8 22 24 22 24-10 24-22-14-22-24-22z" fill="black" stroke="#f97316" stroke-width="4" />
+          <path d="M128 60 L132 80 L128 76 L124 80 Z" fill="#f97316" />
+          <path d="M84 96c10 0 24 24 44 28 -20 2-40-10-52-24z" fill="#f97316" />
+          <path d="M172 96c-10 0-24 24-44 28 20 2 40-10 52-24z" fill="#f97316" />
         </svg>
       </div>
     </section>
