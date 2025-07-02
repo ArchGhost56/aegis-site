@@ -9,45 +9,16 @@
       @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
       body {
-        background: linear-gradient(to right, #0a0a0a, #000);
+        background-color: #0d1117;
         font-family: 'Orbitron', sans-serif;
         color: #f97316;
       }
-      .glow {
-        text-shadow: 0 0 6px #f97316, 0 0 12px #f97316;
-      }
-      .circuit-border {
-        position: relative;
-        border: 2px solid transparent;
+      .modern-border {
+        border: 1px solid #30363d;
         border-radius: 1rem;
-      }
-      .circuit-border::before {
-        content: '';
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        z-index: -1;
-        background: linear-gradient(45deg, #f97316, #000, #f97316);
-        background-size: 400% 400%;
-        animation: gradient-border 6s ease infinite;
-        border-radius: 1rem;
-        opacity: 0.4;
-      }
-      @keyframes gradient-border {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
       }
       .hero {
-        background: radial-gradient(circle at center, #1a1a1a, #000);
+        background-color: #161b22;
         padding: 6rem 1rem;
         display: flex;
         flex-wrap: wrap;
@@ -63,112 +34,69 @@
         font-size: 3rem;
         font-weight: bold;
         color: #f97316;
+        text-shadow: 0 0 10px rgba(249, 115, 22, 0.4);
       }
       .hero-subtitle {
         font-size: 1rem;
-        color: #f97316;
+        color: #eab308;
         margin-top: 1rem;
         line-height: 1.6;
       }
       .hero-buttons button {
         background-color: #f97316;
-        color: black;
+        color: #0d1117;
         padding: 0.75rem 1.5rem;
         margin-right: 1rem;
         border-radius: 0.5rem;
         font-weight: bold;
         transition: 0.3s;
+        box-shadow: 0 0 10px rgba(249, 115, 22, 0.4);
       }
       .hero-buttons button:hover {
-        background-color: black;
-        color: #f97316;
-        border: 1px solid #f97316;
-      }
-      .hero-graphic {
-        animation: pulse-glow 3s infinite ease-in-out;
-        max-width: 80vw;
+        background-color: #fb923c;
+        box-shadow: 0 0 15px rgba(249, 115, 22, 0.6);
       }
       .shield-svg {
         width: 100%;
         max-width: 240px;
         height: auto;
-        filter: drop-shadow(0 0 18px #f97316);
+        filter: drop-shadow(0 0 12px rgba(249, 115, 22, 0.5));
+        transition: transform 0.3s ease;
       }
-      .shield-svg path {
-        fill: url(#gradient-motion);
-        stroke: url(#gradient-motion);
-      }
-      @keyframes pulse-glow {
-        0%, 100% {
-          filter: drop-shadow(0 0 10px #f97316);
-        }
-        50% {
-          filter: drop-shadow(0 0 25px #f97316);
-        }
+      .shield-svg:hover {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.8));
       }
     </style>
   </head>
   <body>
-    <header class="bg-black bg-opacity-80 shadow-lg z-10 relative circuit-border m-4">
+    <header class="bg-[#161b22] shadow-lg z-10 relative modern-border m-4">
       <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
-        <h1 class="text-2xl font-bold tracking-widest text-orange-500 glow">ÆGIS</h1>
-        <nav class="space-x-6 text-orange-300">
-          <a href="#" class="hover:text-orange-400">Home</a>
-          <a href="#features" class="hover:text-orange-400">Features</a>
-          <a href="#contact" class="hover:text-orange-400">Contact</a>
+        <h1 class="text-2xl font-bold tracking-widest text-[#f97316]">ÆGIS</h1>
+        <nav class="space-x-6 text-[#eab308]">
+          <a href="#" class="hover:text-[#f97316]">Home</a>
         </nav>
       </div>
     </header>
 
-    <section class="hero circuit-border m-4">
+    <section class="hero modern-border m-4">
       <div class="hero-text">
-        <h2 class="hero-title glow">SECURE YOUR WORLD<br>WITH ONE SHIELD</h2>
+        <h2 class="hero-title">SECURE YOUR WORLD<br>WITH ONE SHIELD</h2>
         <p class="hero-subtitle">
           Simplify your protection with Aegis Shield. Manage all your digital defenses in one powerful, intuitive system—always on, always alert.
         </p>
         <div class="hero-buttons mt-4">
           <button onclick="alert('Welcome to Aegis! More coming soon.')">GET STARTED</button>
-          <button onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">LEARN MORE</button>
         </div>
       </div>
-      <div class="hero-graphic">
+      <div>
         <svg class="shield-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="gradient-motion" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%">
-                <animate attributeName="stop-color" values="#f97316;#ff4500;#f97316" dur="4s" repeatCount="indefinite" />
-              </stop>
-              <stop offset="100%">
-                <animate attributeName="stop-color" values="#ff4500;#f97316;#ff4500" dur="4s" repeatCount="indefinite" />
-              </stop>
-            </linearGradient>
-          </defs>
-          <path d="M32 2L12 8V24C12 40 21 52 32 60C43 52 52 40 52 24V8L32 2Z" stroke-width="2"/>
+          <path d="M32 2L12 8V24C12 40 21 52 32 60C43 52 52 40 52 24V8L32 2Z" stroke="#f97316" stroke-width="2" fill="none"/>
         </svg>
       </div>
     </section>
 
-    <section id="features" class="circuit-border m-4 p-8 text-center">
-      <h2 class="text-3xl glow mb-4">Core Features</h2>
-      <ul class="space-y-3 text-orange-200">
-        <li>⚡ Real-time Threat Monitoring</li>
-        <li>🧠 AI-Based Intrusion Prevention</li>
-        <li>🛡️ Centralized Security Control</li>
-        <li>📱 Fully Mobile Compatible</li>
-      </ul>
-    </section>
-
-    <section id="contact" class="circuit-border m-4 p-8 text-center">
-      <h2 class="text-3xl glow mb-4">Contact Us</h2>
-      <form class="flex flex-col items-center space-y-4">
-        <input type="text" placeholder="Your Name" class="bg-black border border-orange-500 text-orange-200 px-4 py-2 rounded w-full max-w-md" required />
-        <input type="email" placeholder="Email Address" class="bg-black border border-orange-500 text-orange-200 px-4 py-2 rounded w-full max-w-md" required />
-        <textarea placeholder="Your Message" class="bg-black border border-orange-500 text-orange-200 px-4 py-2 rounded w-full max-w-md" rows="4" required></textarea>
-        <button type="submit" class="bg-orange-500 text-black font-bold px-6 py-2 rounded hover:bg-black hover:text-orange-500 border border-orange-500">Send</button>
-      </form>
-    </section>
-
-    <footer class="bg-black py-6 text-center text-orange-700 text-sm circuit-border m-4">
+    <footer class="bg-[#161b22] py-6 text-center text-[#eab308] text-sm modern-border m-4">
       &copy; 2025 ÆGIS Security Systems. All rights reserved.
     </footer>
   </body>
