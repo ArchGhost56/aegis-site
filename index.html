@@ -127,8 +127,8 @@
           Simplify your protection with Aegis Shield. Manage all your digital defenses in one powerful, intuitive system—always on, always alert.
         </p>
         <div class="hero-buttons mt-4">
-          <button>GET STARTED</button>
-          <button>LEARN MORE</button>
+          <button onclick="alert('Welcome to Aegis! More coming soon.')">GET STARTED</button>
+          <button onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">LEARN MORE</button>
         </div>
       </div>
       <div class="hero-graphic">
@@ -148,9 +148,28 @@
       </div>
     </section>
 
+    <section id="features" class="circuit-border m-4 p-8 text-center">
+      <h2 class="text-3xl glow mb-4">Core Features</h2>
+      <ul class="space-y-3 text-orange-200">
+        <li>⚡ Real-time Threat Monitoring</li>
+        <li>🧠 AI-Based Intrusion Prevention</li>
+        <li>🛡️ Centralized Security Control</li>
+        <li>📱 Fully Mobile Compatible</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="circuit-border m-4 p-8 text-center">
+      <h2 class="text-3xl glow mb-4">Contact Us</h2>
+      <form class="flex flex-col items-center space-y-4">
+        <input type="text" placeholder="Your Name" class="bg-black border border-orange-500 text-orange-200 px-4 py-2 rounded w-full max-w-md" required />
+        <input type="email" placeholder="Email Address" class="bg-black border border-orange-500 text-orange-200 px-4 py-2 rounded w-full max-w-md" required />
+        <textarea placeholder="Your Message" class="bg-black border border-orange-500 text-orange-200 px-4 py-2 rounded w-full max-w-md" rows="4" required></textarea>
+        <button type="submit" class="bg-orange-500 text-black font-bold px-6 py-2 rounded hover:bg-black hover:text-orange-500 border border-orange-500">Send</button>
+      </form>
+    </section>
+
     <footer class="bg-black py-6 text-center text-orange-700 text-sm circuit-border m-4">
-      &copy; 2025 AEGIS Security Systems. All rights reserved.
+      &copy; 2025 ÆGIS Security Systems. All rights reserved.
     </footer>
   </body>
 </html>
-
