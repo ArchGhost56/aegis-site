@@ -39,7 +39,7 @@
         max-width: 700px;
         line-height: 1.6;
       }
-      .hero-buttons button {
+      .hero-buttons a {
         background-color: #f97316;
         color: #0d1117;
         padding: 0.75rem 1.5rem;
@@ -48,8 +48,10 @@
         font-weight: bold;
         transition: 0.3s;
         box-shadow: 0 0 10px rgba(249, 115, 22, 0.4);
+        text-decoration: none;
+        display: inline-block;
       }
-      .hero-buttons button:hover {
+      .hero-buttons a:hover {
         background-color: #fb923c;
         box-shadow: 0 0 15px rgba(249, 115, 22, 0.6);
       }
@@ -71,6 +73,9 @@
         <h1 class="text-2xl font-bold tracking-widest text-[#f97316]">ÆGIS</h1>
         <nav class="space-x-6 text-[#eab308]">
           <a href="#" class="hover:text-[#f97316]">Home</a>
+          <a href="#projects" class="hover:text-[#f97316]">Projects</a>
+          <a href="#about" class="hover:text-[#f97316]">About</a>
+          <a href="#contact" class="hover:text-[#f97316]">Contact</a>
         </nav>
       </div>
     </header>
@@ -81,16 +86,53 @@
       </svg>
       <h2 class="hero-title">Your Shield, Your Control</h2>
       <p class="hero-subtitle">
-        Create, manage, and customize your security ecosystem in one centralized platform. ÆGIS gives you total control with simplicity, scalability, and style.
+        Create, manage, and customize your digital identity in one powerful portfolio.
       </p>
       <div class="hero-buttons">
-        <button onclick="alert('Getting started...')">Get Started</button>
-        <button onclick="alert('Learn more...')">Learn More</button>
+        <a href="#projects">View Projects</a>
+        <a href="#about">About Me</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </section>
+
+    <section id="projects" class="bg-[#0d1117] py-16 px-4 text-center">
+      <h2 class="text-3xl font-bold text-[#f97316] mb-4">Projects</h2>
+      <p class="text-[#eab308] mb-8">A selection of my recent work:</p>
+      <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div class="p-4 modern-border">
+          <h3 class="text-xl font-bold mb-2">Project One</h3>
+          <p class="text-sm text-[#eab308]">Description of the first project with a link or preview.</p>
+        </div>
+        <div class="p-4 modern-border">
+          <h3 class="text-xl font-bold mb-2">Project Two</h3>
+          <p class="text-sm text-[#eab308]">Another example showing your skills and tools used.</p>
+        </div>
+        <div class="p-4 modern-border">
+          <h3 class="text-xl font-bold mb-2">Project Three</h3>
+          <p class="text-sm text-[#eab308]">Summarize what the project does or what problem it solves.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="bg-[#161b22] py-16 px-4 text-center modern-border m-4">
+      <h2 class="text-3xl font-bold text-[#f97316] mb-4">About Me</h2>
+      <p class="text-[#eab308] max-w-3xl mx-auto">
+        I’m a passionate developer focused on building efficient, scalable, and impactful digital experiences. Whether it's front-end design or back-end logic, I bring creativity and precision to every project.
+      </p>
+    </section>
+
+    <section id="contact" class="bg-[#0d1117] py-16 px-4 text-center">
+      <h2 class="text-3xl font-bold text-[#f97316] mb-4">Contact</h2>
+      <p class="text-[#eab308] mb-6">Feel free to reach out via email or any of the platforms below:</p>
+      <div class="flex justify-center space-x-6">
+        <a href="mailto:your.email@example.com" class="text-[#f97316] hover:underline">Email</a>
+        <a href="https://github.com/yourusername" target="_blank" class="text-[#f97316] hover:underline">GitHub</a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="text-[#f97316] hover:underline">LinkedIn</a>
       </div>
     </section>
 
     <footer class="bg-[#161b22] py-6 text-center text-[#eab308] text-sm modern-border m-4">
-      &copy; 2025 ÆGIS Security Systems. All rights reserved.
+      &copy; 2025 ÆGIS Portfolio. All rights reserved.
     </footer>
   </body>
 </html>
