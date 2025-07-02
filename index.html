@@ -21,17 +21,13 @@
         background-color: #161b22;
         padding: 6rem 1rem;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
-        text-align: left;
+        text-align: center;
         gap: 2rem;
       }
-      .hero-text {
-        max-width: 600px;
-      }
       .hero-title {
-        font-size: 3rem;
+        font-size: 2.75rem;
         font-weight: bold;
         color: #f97316;
         text-shadow: 0 0 10px rgba(249, 115, 22, 0.4);
@@ -40,13 +36,14 @@
         font-size: 1rem;
         color: #eab308;
         margin-top: 1rem;
+        max-width: 700px;
         line-height: 1.6;
       }
       .hero-buttons button {
         background-color: #f97316;
         color: #0d1117;
         padding: 0.75rem 1.5rem;
-        margin-right: 1rem;
+        margin: 0.5rem;
         border-radius: 0.5rem;
         font-weight: bold;
         transition: 0.3s;
@@ -57,8 +54,7 @@
         box-shadow: 0 0 15px rgba(249, 115, 22, 0.6);
       }
       .shield-svg {
-        width: 100%;
-        max-width: 240px;
+        width: 100px;
         height: auto;
         filter: drop-shadow(0 0 12px rgba(249, 115, 22, 0.5));
         transition: transform 0.3s ease;
@@ -80,19 +76,16 @@
     </header>
 
     <section class="hero modern-border m-4">
-      <div class="hero-text">
-        <h2 class="hero-title">SECURE YOUR WORLD<br>WITH ONE SHIELD</h2>
-        <p class="hero-subtitle">
-          Simplify your protection with Aegis Shield. Manage all your digital defenses in one powerful, intuitive system—always on, always alert.
-        </p>
-        <div class="hero-buttons mt-4">
-          <button onclick="alert('Welcome to Aegis! More coming soon.')">GET STARTED</button>
-        </div>
-      </div>
-      <div>
-        <svg class="shield-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-          <path d="M32 2L12 8V24C12 40 21 52 32 60C43 52 52 40 52 24V8L32 2Z" stroke="#f97316" stroke-width="2" fill="none"/>
-        </svg>
+      <svg class="shield-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M32 2L12 8V24C12 40 21 52 32 60C43 52 52 40 52 24V8L32 2Z" stroke="#f97316" stroke-width="2" fill="none"/>
+      </svg>
+      <h2 class="hero-title">Your Shield, Your Control</h2>
+      <p class="hero-subtitle">
+        Create, manage, and customize your security ecosystem in one centralized platform. ÆGIS gives you total control with simplicity, scalability, and style.
+      </p>
+      <div class="hero-buttons">
+        <button onclick="alert('Getting started...')">Get Started</button>
+        <button onclick="alert('Learn more...')">Learn More</button>
       </div>
     </section>
 
