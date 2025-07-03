@@ -81,6 +81,7 @@
             posts.forEach(post => {
               const card = document.createElement('div');
               card.className = 'p-4 modern-border text-left';
+              card.setAttribute('data-aos', 'fade-up');
               card.innerHTML = `<h3 class="text-xl font-bold mb-2">${post.title}</h3><p class="text-sm">${post.description}</p>`;
               container.appendChild(card);
             });
@@ -88,7 +89,7 @@
       });
     </script>
   </head>
-  <body class="relative overflow-x-hidden">
+  <body class="flex relative overflow-x-hidden">
     <div id="preloader"><span class="text-[#f97316] text-xl">Loading AEGIS...</span></div>
     <div id="overlay"></div>
     <button id="scrollToTopBtn">↑</button>
@@ -112,13 +113,12 @@
       <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
         <button onclick="toggleSidebar()" class="text-[#f97316] text-2xl">☰</button>
         <h1 class="text-2xl font-bold tracking-widest text-[#f97316]">AEGIS</h1>
-        <!-- Mobile theme toggle -->
         <button onclick="toggleTheme()" class="text-[#f97316] text-xl md:hidden">🌓</button>
       </div>
     </header>
 
     <!-- Hero -->
-    <section class="hero modern-border m-4">
+    <section class="hero modern-border m-4" data-aos="zoom-in">
       <svg class="shield-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
         <path d="M32 2L12 8V24C12 40 21 52 32 60C43 52 52 40 52 24V8L32 2Z" stroke="#f97316" stroke-width="2" fill="none"/>
       </svg>
@@ -132,19 +132,19 @@
     </section>
 
     <!-- Objective Section -->
-    <section id="projects" class="bg-[#0d1117] py-16 px-4 text-center">
+    <section id="projects" class="bg-[#0d1117] py-16 px-4 text-center" data-aos="fade-up">
       <h2 class="text-3xl font-bold text-[#f97316] mb-4">Our Objective</h2>
       <p class="text-[#eab308] mb-8">We Aim To:</p>
       <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        <div class="p-4 modern-border interactive-card">
+        <div class="p-4 modern-border interactive-card" data-aos="fade-up" data-aos-delay="100">
           <h3 class="text-xl font-bold mb-2">Sovereign Security Architecture</h3>
           <p class="text-sm text-[#eab308]">To establish a decentralized, customizable security interface that empowers users with full control over their digital footprint.</p>
         </div>
-        <div class="p-4 modern-border interactive-card">
+        <div class="p-4 modern-border interactive-card" data-aos="fade-up" data-aos-delay="200">
           <h3 class="text-xl font-bold mb-2">Adaptive Threat Intelligence</h3>
           <p class="text-sm text-[#eab308]">To integrate AI-driven behavioral threat detection that evolves in real-time with user activity.</p>
         </div>
-        <div class="p-4 modern-border interactive-card">
+        <div class="p-4 modern-border interactive-card" data-aos="fade-up" data-aos-delay="300">
           <h3 class="text-xl font-bold mb-2">Unified Command Interface</h3>
           <p class="text-sm text-[#eab308]">Aegis merges all security functions into a single, streamlined control center—allowing users to monitor, deploy, and manage multiple protection layers without switching tools or platforms.</p>
         </div>
@@ -152,7 +152,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="bg-[#161b22] py-16 px-4 text-center modern-border m-4">
+    <section id="about" class="bg-[#161b22] py-16 px-4 text-center modern-border m-4" data-aos="fade-up">
       <h2 class="text-3xl font-bold text-[#f97316] mb-4">About us</h2>
       <p class="text-[#eab308] max-w-3xl mx-auto">
         AEGIS is a next-generation cybersecurity initiative built by a collective of digital architects, engineers, and creatives. Our mission is to redefine how individuals and organizations interact with their digital defenses — not as passive barriers, but as intuitive, living systems.
