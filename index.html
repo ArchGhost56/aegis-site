@@ -65,6 +65,10 @@
         transform: scale(1.05);
         filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.8));
       }
+      .interactive-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 0 15px rgba(249, 115, 22, 0.2);
+      }
     </style>
   </head>
   <body>
@@ -76,6 +80,7 @@
           <a href="#projects" class="hover:text-[#f97316]">Feature</a>
           <a href="#about" class="hover:text-[#f97316]">About</a>
           <a href="#contact" class="hover:text-[#f97316]">Contact</a>
+          <a href="#blog" class="hover:text-[#f97316]">Blog</a>
         </nav>
       </div>
     </header>
@@ -99,15 +104,15 @@
       <h2 class="text-3xl font-bold text-[#f97316] mb-4">Our Objective</h2>
       <p class="text-[#eab308] mb-8">We Aim To:</p>
       <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        <div class="p-4 modern-border">
+        <div class="p-4 modern-border interactive-card">
           <h3 class="text-xl font-bold mb-2">Sovereign Security Architecture</h3>
           <p class="text-sm text-[#eab308]">To establish a decentralized, customizable security interface that empowers users with full control over their digital footprint.</p>
         </div>
-        <div class="p-4 modern-border">
+        <div class="p-4 modern-border interactive-card">
           <h3 class="text-xl font-bold mb-2">Adaptive Threat Intelligence</h3>
           <p class="text-sm text-[#eab308]">To integrate AI-driven behavioral threat detection that evolves in real-time with user activity.</p>
         </div>
-        <div class="p-4 modern-border">
+        <div class="p-4 modern-border interactive-card">
           <h3 class="text-xl font-bold mb-2">Unified Command Interface</h3>
           <p class="text-sm text-[#eab308]">Aegis merges all security functions into a single, streamlined control center—allowing users to monitor, deploy, and manage multiple protection layers without switching tools or platforms.</p>
         </div>
@@ -117,10 +122,25 @@
     <section id="about" class="bg-[#161b22] py-16 px-4 text-center modern-border m-4">
       <h2 class="text-3xl font-bold text-[#f97316] mb-4">About us</h2>
       <p class="text-[#eab308] max-w-3xl mx-auto">
-       AEGIS is a next-generation cybersecurity initiative built by a collective of digital architects, engineers, and creatives. Our mission is to redefine how individuals and organizations interact with their digital defenses — not as passive barriers, but as intuitive, living systems.
-
-With a fusion of adaptive AI, modular architecture, and user-centric design, AEGIS empowers users to take full control over their privacy, identity, and data. We're not just building a security system — we're building trust in a world that desperately needs it.
+        AEGIS is a next-generation cybersecurity initiative built by a collective of digital architects, engineers, and creatives. Our mission is to redefine how individuals and organizations interact with their digital defenses — not as passive barriers, but as intuitive, living systems.
+        <br /><br />
+        With a fusion of adaptive AI, modular architecture, and user-centric design, AEGIS empowers users to take full control over their privacy, identity, and data. We're not just building a security system — we're building trust in a world that desperately needs it.
       </p>
+    </section>
+
+    <section id="blog" class="bg-[#0d1117] py-16 px-4 text-center">
+      <h2 class="text-3xl font-bold text-[#f97316] mb-4">Latest News</h2>
+      <p class="text-[#eab308] mb-8">Insights and updates from the ÆGIS team</p>
+      <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div class="p-4 modern-border text-left">
+          <h3 class="text-xl font-bold mb-2">Why Traditional Firewalls Are Failing</h3>
+          <p class="text-sm text-[#eab308]">Discover why conventional security methods are outdated and how ÆGIS provides a smarter approach.</p>
+        </div>
+        <div class="p-4 modern-border text-left">
+          <h3 class="text-xl font-bold mb-2">Building a Human-Centric Security System</h3>
+          <p class="text-sm text-[#eab308]">We explain our philosophy behind merging usability with robust digital defense systems.</p>
+        </div>
+      </div>
     </section>
 
     <section id="contact" class="bg-[#0d1117] py-16 px-4 text-center">
