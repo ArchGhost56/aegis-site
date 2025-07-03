@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ÆGIS</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
       html.dark body{background:#fafafa;color:#161b22;}
@@ -18,10 +19,12 @@
       .shield-svg{width:100px;height:auto;filter:drop-shadow(0 0 12px rgba(249,115,22,.5));transition:transform .3s}
       .shield-svg:hover{transform:scale(1.05);filter:drop-shadow(0 0 20px rgba(249,115,22,.8))}
       .interactive-card:hover{transform:translateY(-4px);box-shadow:0 0 15px rgba(249,115,22,.2)}
-      /* overlay for sidebar */
       #overlay{background:rgba(0,0,0,.6);position:fixed;inset:0;z-index:30;opacity:0;pointer-events:none;transition:opacity .3s}
       #overlay.active{opacity:1;pointer-events:auto}
+      #preloader {position:fixed;inset:0;background:#0d1117;z-index:50;display:flex;align-items:center;justify-content:center;transition:opacity .5s ease;}
+      #preloader.fade-out{opacity:0;pointer-events:none;}
     </style>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
       function toggleSidebar(){
         const sb=document.getElementById('sidebar');
@@ -34,6 +37,10 @@
         const btn=document.getElementById('themeBtn');
         btn.innerText=document.documentElement.classList.contains('dark')?'☀ Light':'🌙 Dark';
       }
+      window.addEventListener('load',()=>{
+        document.getElementById('preloader').classList.add('fade-out');
+        AOS.init();
+      });
       document.addEventListener('DOMContentLoaded',()=>{
         document.querySelectorAll('#sidebar a').forEach(link=>{
           link.addEventListener('click',()=>{toggleSidebar();});
@@ -43,18 +50,16 @@
     </script>
   </head>
   <body class="flex relative overflow-x-hidden">
-    <!-- Overlay -->
+    <div id="preloader"><span class="text-[#f97316] text-xl">Loading AEGIS...</span></div>
     <div id="overlay"></div>
-
-    <!-- Sidebar -->
     <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-[#161b22] p-6 space-y-4 border-r border-[#30363d] transform -translate-x-full transition-transform duration-300 z-40">
-      <h2 class="text-xl font-bold mb-4">⚡ AEGIS Panel</h2>
+      <h2 class="text-xl font-bold mb-4">AEGIS Panel</h2>
       <nav class="flex flex-col space-y-2">
-        <a href="#" class="hover:text-[#fb923c]">🏠 Home</a>
-        <a href="#projects" class="hover:text-[#fb923c]">🚀 Features</a>
-        <a href="#about" class="hover:text-[#fb923c]">👤 About</a>
-        <a href="#blog" class="hover:text-[#fb923c]">📰 Blog</a>
-        <a href="#contact" class="hover:text-[#fb923c]">📬 Contact</a>
+        <a href="#" class="hover:text-[#fb923c]">Home</a>
+        <a href="#projects" class="hover:text-[#fb923c]">Features</a>
+        <a href="#about" class="hover:text-[#fb923c]">About</a>
+        <a href="#blog" class="hover:text-[#fb923c]">Blog</a>
+        <a href="#contact" class="hover:text-[#fb923c]">Contact</a>
       </nav>
       <button onclick="toggleTheme()" id="themeBtn" class="mt-6 w-full py-2 bg-[#f97316] text-black rounded hover:bg-[#fb923c]">🌙 Dark</button>
       <div class="mt-8">
@@ -63,10 +68,7 @@
         <a href="mailto:your.email@example.com" class="block text-sm hover:text-[#fb923c]">Email</a>
       </div>
     </aside>
-
-    <!-- Main Content -->
     <div class="flex-1">
-      <!-- Header -->
       <header class="bg-[#161b22] shadow-lg modern-border m-4">
         <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
           <button class="text-2xl" onclick="toggleSidebar()">☰</button>
@@ -74,34 +76,30 @@
           <button onclick="toggleTheme()" class="md:hidden text-lg">🌓</button>
         </div>
       </header>
-
-      <!-- Hero -->
-      <section class="hero modern-border m-4">
+      <section class="hero modern-border m-4" data-aos="zoom-in">
         <svg class="shield-svg" viewBox="0 0 64 64"><path d="M32 2L12 8V24C12 40 21 52 32 60C43 52 52 40 52 24V8L32 2Z" stroke="currentColor" stroke-width="2" fill="none"/></svg>
         <h2 class="hero-title">Your Shield, Your Control</h2>
         <p class="hero-subtitle">Built to Guard. Designed to Empower.</p>
-        <div class="hero-buttons"><a href="#projects">Objective</a><a href="#about">About Us</a><a href="#contact">Contact</a></div>
-      </section>
-
-      <!-- Projects -->
-      <section id="projects" class="bg-[#0d1117] py-16 px-4 text-center">
-        <h2 class="text-3xl font-bold mb-4">Our Objective</h2>
-        <p class="mb-8">We Aim To:</p>
-        <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          <div class="p-4 modern-border interactive-card"><h3 class="text-xl font-bold mb-2">Sovereign Security Architecture</h3><p class="text-sm">To establish a decentralized, customizable security interface that empowers users with full control over their digital footprint.</p></div>
-          <div class="p-4 modern-border interactive-card"><h3 class="text-xl font-bold mb-2">Adaptive Threat Intelligence</h3><p class="text-sm">To integrate AI-driven behavioral threat detection that evolves in real-time with user activity.</p></div>
-          <div class="p-4 modern-border interactive-card"><h3 class="text-xl font-bold mb-2">Unified Command Interface</h3><p class="text-sm">Aegis merges all security functions into a single, streamlined control center—allowing users to monitor, deploy, and manage multiple protection layers without switching tools or platforms.</p></div>
+        <div class="hero-buttons">
+          <a href="#projects">Objective</a>
+          <a href="#about">About Us</a>
+          <a href="#contact">Contact</a>
         </div>
       </section>
-
-      <!-- About -->
-      <section id="about" class="bg-[#161b22] py-16 px-4 text-center modern-border m-4">
+      <section id="projects" class="bg-[#0d1117] py-16 px-4 text-center">
+        <h2 class="text-3xl font-bold mb-4" data-aos="fade-up">Our Objective</h2>
+        <p class="mb-8" data-aos="fade-up">We Aim To:</p>
+        <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div class="p-4 modern-border interactive-card" data-aos="fade-up"><h3 class="text-xl font-bold mb-2">Sovereign Security Architecture</h3><p class="text-sm">To establish a decentralized, customizable security interface that empowers users with full control over their digital footprint.</p></div>
+          <div class="p-4 modern-border interactive-card" data-aos="fade-up" data-aos-delay="100"><h3 class="text-xl font-bold mb-2">Adaptive Threat Intelligence</h3><p class="text-sm">To integrate AI-driven behavioral threat detection that evolves in real-time with user activity.</p></div>
+          <div class="p-4 modern-border interactive-card" data-aos="fade-up" data-aos-delay="200"><h3 class="text-xl font-bold mb-2">Unified Command Interface</h3><p class="text-sm">Aegis merges all security functions into a single, streamlined control center—allowing users to monitor, deploy, and manage multiple protection layers without switching tools or platforms.</p></div>
+        </div>
+      </section>
+      <section id="about" class="bg-[#161b22] py-16 px-4 text-center modern-border m-4" data-aos="fade-in">
         <h2 class="text-3xl font-bold mb-4">About Us</h2>
         <p class="max-w-3xl mx-auto">AEGIS is a next‑generation cybersecurity initiative built by a collective of digital architects, engineers, and creatives. Our mission is to redefine how individuals and organizations interact with their digital defenses — not as passive barriers, but as intuitive, living systems.<br><br>With a fusion of adaptive AI, modular architecture, and user‑centric design, AEGIS empowers users to take full control over their privacy, identity, and data.</p>
       </section>
-
-      <!-- Blog -->
-      <section id="blog" class="bg-[#0d1117] py-16 px-4 text-center">
+      <section id="blog" class="bg-[#0d1117] py-16 px-4 text-center" data-aos="fade-up">
         <h2 class="text-3xl font-bold mb-4">Latest News</h2>
         <p class="mb-8">Insights and updates from the ÆGIS team</p>
         <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
@@ -109,15 +107,11 @@
           <div class="p-4 modern-border text-left"><h3 class="text-xl font-bold mb-2">Building a Human-Centric Security System</h3><p class="text-sm">We explain our philosophy behind merging usability with robust digital defense systems.</p></div>
         </div>
       </section>
-
-      <!-- Contact -->
-      <section id="contact" class="bg-[#0d1117] py-16 px-4 text-center">
+      <section id="contact" class="bg-[#0d1117] py-16 px-4 text-center" data-aos="fade-in">
         <h2 class="text-3xl font-bold mb-4">Contact</h2>
         <p class="mb-6">Feel free to reach out via email or any of the platforms below:</p>
         <div class="flex justify-center space-x-6"><a href="mailto:your.email@example.com" class="hover:underline">Email</a><a href="https://github.com/ArchGhost56" target="_blank" class="hover:underline">GitHub</a></div>
       </section>
-
-      <!-- Footer -->
       <footer class="bg-[#161b22] py-6 text-center text-sm modern-border m-4">© 2025 ÆGIS Security Systems. All rights reserved.</footer>
     </div>
   </body>
