@@ -112,6 +112,8 @@
       <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
         <button onclick="toggleSidebar()" class="text-[#f97316] text-2xl">☰</button>
         <h1 class="text-2xl font-bold tracking-widest text-[#f97316]">AEGIS</h1>
+        <!-- Mobile theme toggle -->
+        <button onclick="toggleTheme()" class="text-[#f97316] text-xl md:hidden">🌓</button>
       </div>
     </header>
 
@@ -166,6 +168,18 @@
       <div id="blogPosts" class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
         <p class="col-span-2 text-center">Loading...</p>
       </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="bg-[#0d1117] py-16 px-4 text-center">
+      <h2 class="text-3xl font-bold text-[#f97316] mb-4">Contact</h2>
+      <p class="text-[#eab308] mb-6">Feel free to reach out via email or any of the platforms below:</p>
+      <div class="flex justify-center space-x-6">
+        <a href="mailto:your.email@example.com" class="text-[#f97316] hover:underline">Email</a>
+        <a href="https://github.com/ArchGhost56" target="_blank" class="text-[#f97316] hover:underline">GitHub</a>
+      </div>
+
+      <!-- FOOTER SECTION -->
     </section>
 <footer class="bg-[#161b22] py-6 text-center text-[#eab308] text-sm modern-border m-4">
       &copy; 2025 AEGIS Security Systems. All rights reserved.
