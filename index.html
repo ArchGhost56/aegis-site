@@ -21,20 +21,70 @@
       .interactive-card:hover{transform:translateY(-4px);box-shadow:0 0 15px rgba(249,115,22,.2)}
       #overlay{background:rgba(0,0,0,.6);position:fixed;inset:0;z-index:30;opacity:0;pointer-events:none;transition:opacity .3s}
       #overlay.active{opacity:1;pointer-events:auto}
-      #preloader{position:fixed;inset:0;background:#0d1117;z-index:50;display:flex;align-items:center;justify-content:center;transition:opacity .5s ease;}
-      #preloader.fade-out{opacity:0;pointer-events:none}
-      #scrollToTopBtn{position:fixed;bottom:30px;right:30px;background:#f97316;color:#0d1117;border:none;border-radius:50%;width:40px;height:40px;font-size:20px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:50}
+      #preloader {position:fixed;inset:0;background:#0d1117;z-index:50;display:flex;align-items:center;justify-content:center;transition:opacity .5s ease;}
+      #preloader.fade-out{opacity:0;pointer-events:none;}
+      #scrollToTopBtn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #f97316;
+        color: #0d1117;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        cursor: pointer;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 50;
+      }
     </style>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
-      function toggleSidebar(){const sb=document.getElementById('sidebar');const ov=document.getElementById('overlay');sb.classList.toggle('-translate-x-full');ov.classList.toggle('active');}
-      function toggleTheme(){document.documentElement.classList.toggle('dark');const btn=document.getElementById('themeBtn');btn.innerText=document.documentElement.classList.contains('dark')?'☀ Light':'🌙 Dark';}
-      window.addEventListener('load',()=>{document.getElementById('preloader').classList.add('fade-out');AOS.init();});
+      function toggleSidebar(){
+        const sb=document.getElementById('sidebar');
+        const ov=document.getElementById('overlay');
+        sb.classList.toggle('-translate-x-full');
+        ov.classList.toggle('active');
+      }
+      function toggleTheme(){
+        document.documentElement.classList.toggle('dark');
+        const btn=document.getElementById('themeBtn');
+        btn.innerText=document.documentElement.classList.contains('dark')?'☀ Light':'🌙 Dark';
+      }
+      window.addEventListener('load',()=>{
+        document.getElementById('preloader').classList.add('fade-out');
+        AOS.init();
+      });
       document.addEventListener('DOMContentLoaded',()=>{
-        document.querySelectorAll('#sidebar a').forEach(l=>l.addEventListener('click',toggleSidebar));
+        document.querySelectorAll('#sidebar a').forEach(link=>{
+          link.addEventListener('click',()=>{toggleSidebar();});
+        });
         document.getElementById('overlay').addEventListener('click',toggleSidebar);
-        const sBtn=document.getElementById('scrollToTopBtn');window.addEventListener('scroll',()=>{sBtn.style.display=window.scrollY>200?'flex':'none'});sBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-        fetch('blog-data.json').then(r=>r.json()).then(posts=>{const c=document.getElementById('blogPosts');c.innerHTML='';posts.forEach(p=>{const d=document.createElement('div');d.className='p-4 modern-border text-left';d.setAttribute('data-aos','fade-up');d.innerHTML=`<h3 class="text-xl font-bold mb-2">${p.title}</h3><p class="text-sm">${p.description}</p>`;c.appendChild(d);});});
+
+        const scrollBtn = document.getElementById('scrollToTopBtn');
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 200) scrollBtn.style.display = 'flex';
+          else scrollBtn.style.display = 'none';
+        });
+        scrollBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        fetch('blog-data.json')
+          .then(res => res.json())
+          .then(posts => {
+            const container = document.getElementById('blogPosts');
+            container.innerHTML = '';
+            posts.forEach(post => {
+              const card = document.createElement('div');
+              card.className = 'p-4 modern-border text-left';
+              card.innerHTML = `<h3 class="text-xl font-bold mb-2">${post.title}</h3><p class="text-sm">${post.description}</p>`;
+              container.appendChild(card);
+            });
+          });
       });
     </script>
   </head>
@@ -42,9 +92,8 @@
     <div id="preloader"><span class="text-[#f97316] text-xl">Loading AEGIS...</span></div>
     <div id="overlay"></div>
     <button id="scrollToTopBtn">↑</button>
-
     <!-- Sidebar -->
-    <aside id="sidebar" class="fixed top-0 left-0 z-40 h-full w-64 bg-[#161b22] transform -translate-x-full transition-transform duration-300 shadow-lg modern-border">
+    <aside id="sidebar" class="fixed top-0 left-0 z-40 h-full w-64 bg-[#161b22] transform -translate-x-full transition-transform duration-300 ease-in-out shadow-lg modern-border">
       <div class="flex flex-col h-full p-4 space-y-4">
         <h2 class="text-2xl font-bold text-[#f97316]">ÆGIS MENU</h2>
         <nav class="flex-1 space-y-4 text-[#eab308]">
@@ -58,65 +107,83 @@
       </div>
     </aside>
 
-    <!-- Main wrapper shifts right on desktop -->
-    <main class="flex-1 ml-0 md:ml-64 px-4">
-      <!-- Header -->
-      <header class="bg-[#161b22] shadow-lg modern-border my-4 px-6 py-4 flex justify-between items-center" data-aos="fade-down">
+    <!-- Header -->
+    <header class="bg-[#161b22] shadow-lg z-20 relative w-full modern-border m-4">
+      <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
         <button onclick="toggleSidebar()" class="text-[#f97316] text-2xl">☰</button>
         <h1 class="text-2xl font-bold tracking-widest text-[#f97316]">AEGIS</h1>
+        <!-- Mobile theme toggle -->
         <button onclick="toggleTheme()" class="text-[#f97316] text-xl md:hidden">🌓</button>
-      </header>
+      </div>
+    </header>
 
-      <!-- Hero -->
-      <section class="hero modern-border my-4" data-aos="zoom-in">
-        <svg class="shield-svg" viewBox="0 0 64 64"><path d="M32 2L12 8V24C12 40 21 52 32 60C43 52 52 40 52 24V8L32 2Z" stroke="#f97316" stroke-width="2" fill="none"/></svg>
-        <h2 class="hero-title">Your Shield, Your Control</h2>
-        <p class="hero-subtitle">Built to Guard. Designed to Empower.</p>
-        <div class="hero-buttons"><a href="#projects">Objective</a><a href="#about">About Us</a><a href="#contact">Contact</a></div>
-      </section>
+    <!-- Hero -->
+    <section class="hero modern-border m-4">
+      <svg class="shield-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M32 2L12 8V24C12 40 21 52 32 60C43 52 52 40 52 24V8L32 2Z" stroke="#f97316" stroke-width="2" fill="none"/>
+      </svg>
+      <h2 class="hero-title">Your Shield, Your Control</h2>
+      <p class="hero-subtitle">Built to Guard. Designed to Empower.</p>
+      <div class="hero-buttons">
+        <a href="#projects">Objective</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </section>
 
-      <!-- Objective Section -->
-      <section id="projects" class="bg-[#0d1117] py-16 px-4 text-center" data-aos="fade-up">
-        <h2 class="text-3xl font-bold text-[#f97316] mb-4">Our Objective</h2>
-        <p class="text-[#eab308] mb-8">We Aim To:</p>
-        <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          <div class="p-4 modern-border interactive-card" data-aos="fade-up" data-aos-delay="100"><h3 class="text-xl font-bold mb-2">Sovereign Security Architecture</h3><p class="text-sm text-[#eab308]">To establish a decentralized, customizable security interface that empowers users with full control over their digital footprint.</p></div>
-          <div class="p-4 modern-border interactive-card" data-aos="fade-up" data-aos-delay="200"><h3 class="text-xl font-bold mb-2">Adaptive Threat Intelligence</h3><p class="text-sm text-[#eab308]">To integrate AI-driven behavioral threat detection that evolves in real-time with user activity.</p></div>
-          <div class="p-4 modern-border interactive-card" data-aos="fade-up" data-aos-delay="300"><h3 class="text-xl font-bold mb-2">Unified Command Interface</h3><p class="text-sm text-[#eab308]">AEGIS merges all security functions into a single control center—allowing users to monitor, deploy, and manage multiple protection layers.</p></div>
+    <!-- Objective Section -->
+    <section id="projects" class="bg-[#0d1117] py-16 px-4 text-center">
+      <h2 class="text-3xl font-bold text-[#f97316] mb-4">Our Objective</h2>
+      <p class="text-[#eab308] mb-8">We Aim To:</p>
+      <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div class="p-4 modern-border interactive-card">
+          <h3 class="text-xl font-bold mb-2">Sovereign Security Architecture</h3>
+          <p class="text-sm text-[#eab308]">To establish a decentralized, customizable security interface that empowers users with full control over their digital footprint.</p>
         </div>
-      </section>
-
-      <!-- About Section -->
-      <section id="about" class="bg-[#161b22] py-16 px-4 text-center modern-border my-4" data-aos="fade-up">
-        <h2 class="text-3xl font-bold text-[#f97316] mb-4">About Us</h2>
-        <p class="text-[#eab308] max-w-3xl mx-auto">AEGIS is a next-generation cybersecurity initiative built by a collective of digital architects, engineers, and creatives. Our mission is to redefine how individuals and organizations interact with their digital defenses — not as passive barriers, but as intuitive, living systems.<br><br>With adaptive AI, modular architecture, and user-centric design, AEGIS empowers users to take full control over their privacy, identity, and data.</p>
-      </section>
-
-      <!-- Blog Section -->
-      <section id="blog" class="bg-[#0d1117] py-16 px-4 text-center" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-4">Latest News</h2>
-        <p class="mb-8">Insights and updates from the ÆGIS team</p>
-        <div id="blogPosts" class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          <p class="col-span-2 text-center">Loading...</p>
+        <div class="p-4 modern-border interactive-card">
+          <h3 class="text-xl font-bold mb-2">Adaptive Threat Intelligence</h3>
+          <p class="text-sm text-[#eab308]">To integrate AI-driven behavioral threat detection that evolves in real-time with user activity.</p>
         </div>
-      </section>
-
-      <!-- Contact Section -->
-      <section id="contact" class="bg-[#0d1117] py-16 px-4 text-center">
-        <h2 class="text-3xl font-bold text-[#f97316] mb-4">Contact</h2>
-        <p class="text-[#eab308] mb-6">Feel free to reach out via email or any of the platforms below:</p>
-        <div class="flex justify-center space-x-6">
-          <a href="mailto:your.email@example.com" class="text-[#f97316] hover:underline">Email</a>
-          <a href="https://github.com/ArchGhost56" target="_blank" class="text-[#f97316] hover:underline">GitHub</a>
+        <div class="p-4 modern-border interactive-card">
+          <h3 class="text-xl font-bold mb-2">Unified Command Interface</h3>
+          <p class="text-sm text-[#eab308]">Aegis merges all security functions into a single, streamlined control center—allowing users to monitor, deploy, and manage multiple protection layers without switching tools or platforms.</p>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
-    <!-- Footer -->
-    <footer class="bg-[#161b22] py-6 text-center text-[#eab308] text-sm modern-border m-4">
+    <!-- About Section -->
+    <section id="about" class="bg-[#161b22] py-16 px-4 text-center modern-border m-4">
+      <h2 class="text-3xl font-bold text-[#f97316] mb-4">About us</h2>
+      <p class="text-[#eab308] max-w-3xl mx-auto">
+        AEGIS is a next-generation cybersecurity initiative built by a collective of digital architects, engineers, and creatives. Our mission is to redefine how individuals and organizations interact with their digital defenses — not as passive barriers, but as intuitive, living systems.
+        <br /><br />
+        With a fusion of adaptive AI, modular architecture, and user-centric design, AEGIS empowers users to take full control over their privacy, identity, and data. We're not just building a security system — we're building trust in a world that desperately needs it.
+      </p>
+    </section>
+
+    <!-- BLOG SECTION -->
+    <section id="blog" class="bg-[#0d1117] py-16 px-4 text-center" data-aos="fade-up">
+      <h2 class="text-3xl font-bold mb-4">Latest News</h2>
+      <p class="mb-8">Insights and updates from the ÆGIS team</p>
+      <div id="blogPosts" class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <p class="col-span-2 text-center">Loading...</p>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="bg-[#0d1117] py-16 px-4 text-center">
+      <h2 class="text-3xl font-bold text-[#f97316] mb-4">Contact</h2>
+      <p class="text-[#eab308] mb-6">Feel free to reach out via email or any of the platforms below:</p>
+      <div class="flex justify-center space-x-6">
+        <a href="mailto:your.email@example.com" class="text-[#f97316] hover:underline">Email</a>
+        <a href="https://github.com/ArchGhost56" target="_blank" class="text-[#f97316] hover:underline">GitHub</a>
+      </div>
+
+      <!-- FOOTER SECTION -->
+    </section>
+<footer class="bg-[#161b22] py-6 text-center text-[#eab308] text-sm modern-border m-4">
       &copy; 2025 AEGIS Security Systems. All rights reserved.
     </footer>
   </body>
 </html>
-
   
